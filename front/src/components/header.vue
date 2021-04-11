@@ -33,37 +33,36 @@
             </div>
         </div>
         <div class="nav-header">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+            <b-navbar class="navbar" toggleable="lg" type="dark">
                 <img src="../images/logo.png">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-            
-                <div class="collapse navbar-collapse text-right" id="navbarTogglerDemo02">
+                <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+                <b-collapse id="nav-collapse" is-nav>
+                <!-- Right aligned nav items -->
+                <b-navbar-nav class="ml-auto">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                        <router-link class="nav-link active" to="/">Main </router-link>
-                        </li>
-                        <li class="nav-item">
-                        <router-link class="nav-link" to="/about_us">About us</router-link>
-                        </li>
-                        <li class="nav-item">
-                        <router-link class="nav-link" to="#">Best places</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/restaurants">Restaurants</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/cafees">Cafe</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link" to="/canteens">Canteens</router-link>
-                        </li>
-
-                    </ul>
-                </div>
-            </nav>
+                            <li class="nav-item">
+                            <router-link class="nav-link active" to="/">Main </router-link>
+                            </li>
+                            <li class="nav-item">
+                            <router-link class="nav-link" to="/about_us">About us</router-link>
+                            </li>
+                            <li class="nav-item">
+                            <router-link class="nav-link" to="#">Best places</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/restaurants">Restaurants</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/cafees">Cafe</router-link>
+                            </li>
+                            <li class="nav-item">
+                                <router-link class="nav-link" to="/canteens">Canteens</router-link>
+                            </li>
+                        </ul>
+                </b-navbar-nav>
+                </b-collapse>
+            </b-navbar>
             </div>
         </div>
     </div>

@@ -3,35 +3,19 @@
         <Header />
         <div class="container restaurants">
             <h1>Canteens</h1>
-            <div class="list border border-warning">
+            <div class="list border border-warning" v-for="(canteen, index) in canteens" :key="index">
                 <div class="media">
                     <img src="../images/slider2.webp">
                     <div class="media-body">
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col--12">
-                                <router-link to="/restaurants/:id"><h4>Paul</h4></router-link>
-                                <h6>Адрес: Толе Би, 59</h6>
+                                <router-link :to="{path: `/restaurants/${canteen.id}/meals/`}"><h4>{{ canteen.name }}</h4></router-link>
+                                <h6>{{ canteen.address }}</h6>
+                                <h6>{{ canteen.avg_cost }}</h6>
                                 <p>О ресторане: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col--12 text-center">
-                                <router-link to="/restaurants/:id"><button type="button" class="btn btn-warning"><p>Перейти в меню</p></button></router-link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="list border border-warning">
-                <div class="media">
-                    <img src="../images/slider2.webp">
-                    <div class="media-body">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col--12">
-                                <router-link to="/restaurants/:id"><h4>Paul</h4></router-link>
-                                <h6>Адрес: Толе Би, 59</h6>
-                                <p>О ресторане: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col--12 text-center">
-                                <button type="button" class="btn btn-warning"><p>Перейти в меню</p></button>
+                                <router-link :to="{path: `/restaurants/${canteen.id}/meals/`}"><button type="button" class="btn btn-warning"><p>Перейти в меню</p></button></router-link>
                             </div>
                         </div>
                     </div>
@@ -42,12 +26,26 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
 import Header from './header'
 import Footer from './footer'
 export default {
+    data(){
+        return{
+            canteens: {}
+        }
+    },
     components:{
         Header,
         Footer
+    },
+    mounted(){
+        var self = this;
+        axios.get(`http://127.0.0.1:8000/api/categories/2/restaurants/`)
+        .then(response => (self.canteens = response.data))
+        .catch(function(error){
+            console.log(error);
+        })
     }
 }
 </script>

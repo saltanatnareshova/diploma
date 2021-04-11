@@ -4,55 +4,13 @@
         <div class="container menu">
             <h1>Меню</h1>
             <div class="row">
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12" v-for="(post, index) in posts" :key="index">
                     <div class="items border border-warning">
-                        <h4>Croissants</h4>
+                        <h4>{{ post.name }}</h4>
                         <p>(orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the) </p>
                         <div class="row">
                             <div class="col-6">
-                                <h4>Price: 700 $</h4>
-                            </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-success">Заказать</button>
-                            </div>
-                        </div>                      
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="items border border-warning">
-                        <h4>Croissants</h4>
-                        <p>(orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the) </p>
-                        <div class="row">
-                            <div class="col-6">
-                                <h4>Price: 700 $</h4>
-                            </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-success">Заказать</button>
-                            </div>
-                        </div>                      
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="items border border-warning">
-                        <h4>Croissants</h4>
-                        <p>(orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the) </p>
-                        <div class="row">
-                            <div class="col-6">
-                                <h4>Price: 700 $</h4>
-                            </div>
-                            <div class="col-6">
-                                <button type="button" class="btn btn-success">Заказать</button>
-                            </div>
-                        </div>                      
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                    <div class="items border border-warning">
-                        <h4>Croissants</h4>
-                        <p>(orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the) </p>
-                        <div class="row">
-                            <div class="col-6">
-                                <h4>Price: 700 $</h4>
+                                <h4>Price:{{ post.price }}</h4>
                             </div>
                             <div class="col-6">
                                 <button type="button" class="btn btn-success">Заказать</button>
@@ -66,12 +24,28 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 import Header from './header'
 import Footer from './footer'
 export default {
+    data(){
+        return{
+            posts: {},
+            meals: this.$route.params.id
+        }
+    },
     components:{
         Header,
         Footer
+    },
+    mounted(){
+        var self = this;
+        axios.get(`http://127.0.0.1:8000/api/restaurants/${self.meals}/meals/`)
+        .then(response => (self.posts = response.data
+        ))
+        .catch(function(error){
+            console.log(error);
+        })
     }
 }
 </script>

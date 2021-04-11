@@ -17,7 +17,7 @@
             </b-row>
         </div>
         <div class="about">
-            <div class="container justify-content-center">
+            <div class="container justify-content-center">                
                 <h1 style="padding-top: 100px;">О нас</h1>
                 <p>У вас когда-нибудь возникала проблема......???</p>
                 <p>Вам больше не нужно тратить время на ожидание блюд и счета — заказ будет на столе или упакован с собой точно ко времени визита.</p>
@@ -99,6 +99,7 @@
 </div>
 </template>
 <script>
+import axios from 'axios';
 import Header from './header';
 import Footer from './footer';
 export default {
@@ -106,6 +107,13 @@ export default {
     components: {
         Header,
         Footer
+    },
+    data(){
+        return{
+            
+        }
+    },
+    mounted(){
     }
 }
 </script>

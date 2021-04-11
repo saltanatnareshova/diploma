@@ -8,13 +8,13 @@
                     <form>
                         <div class="form-group">
                             <label class="emailLabel" for="exampleInputEmail1">E-mail</label>
-                            <input type="email" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            <input type="text" class="form-control email" v-model="data.username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
                         </div>
                         <div class="form-group">
                             <label class="passwordLabel" for="exampleInputPassword1">Пароль</label>
-                            <input type="password" class="form-control email" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control email" v-model="data.password" id="exampleInputPassword1" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-warning"><p>Submit</p></button>
+                        <button type="submit" class="btn btn-warning" @click="submit()"><p>Submit</p></button>
                     </form>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 column2 text-center">
@@ -32,9 +32,24 @@
 import Header from './header'
 import Footer from './footer'
 export default {
+    data(){
+        return{
+              data :{
+                  username: '',
+                  password: ''
+              }
+        }
+    },
     components:{
         Header,
         Footer
+    },
+    methods:{
+        submit(){
+            this.$store.dispatch('signin', this.data).then(() => {
+                console.log("Hello")
+            })
+        }
     }
 }
 </script>

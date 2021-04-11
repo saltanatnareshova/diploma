@@ -7,30 +7,30 @@
             <form>
                 <div class="row" style="margin-bottom: 30px;">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your name">
+                        <input type="text" class="form-control" v-model="formData.username"  aria-describedby="emailHelp" placeholder="Your username">
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your surname">
+                        <input type="text" class="form-control" v-model="formData.first_name"  aria-describedby="emailHelp" placeholder="Your name">
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="e-mail">
+                    <input type="email" class="form-control" v-model="formData.email"  placeholder="e-mail">
                 </div>
                 <div class="row" style="margin-top: 30px;">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the password">
+                        <input type="password" class="form-control" v-model="formData.password" aria-describedby="emailHelp" placeholder="Enter the password">
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the password again">
+                        <input type="password" class="form-control" v-model="formData.password"  aria-describedby="emailHelp" placeholder="Enter the password again">
                     </div>
                 </div>
                 <div class="form-check" style="margin-top: 30px;">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required="true">
                     <label class="form-check-label" for="exampleCheck1">Я ознакомлен(а) с Политикой конфиденциальности и даю согласие на обработку моих персональных данных. Я принимаю условия  
 Пользовательского соглашения
  </label>
                 </div>
-                <button type="submit" class="btn btn-warning"><p>Регистрация</p></button>
+                <button type="submit" class="btn btn-warning" @click.prevent="submit"><p>Регистрация</p></button>
             </form>
         </div>
         <Footer />
@@ -40,9 +40,25 @@
 import Header from './header'
 import Footer from './footer'
 export default {
+    data(){
+        return{
+            formData:{
+                email: '',
+                username: '',
+                password: '',
+                first_name: ''
+            }
+        }
+    },
     components:{
         Header,
         Footer
+    },
+    methods:{
+        submit(){
+            this.$store.dispatch('signup', this.formData);
+            console.log(this.formData)
+        }
     }
 }
 </script>
