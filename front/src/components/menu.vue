@@ -31,7 +31,7 @@ export default {
     data(){
         return{
             posts: {},
-            meals: this.$route.params.id
+            meals: this.$route.params.id,
         }
     },
     components:{
@@ -46,12 +46,15 @@ export default {
         .catch(function(error){
             console.log(error);
         })
+    },
+    methods:{
+        
     }
 }
 </script>
 <style scoped>
 .menu{
-    margin-top: 200px;
+    margin-top: 300px;
     margin-bottom: 100px;
 }
 .menu h1{

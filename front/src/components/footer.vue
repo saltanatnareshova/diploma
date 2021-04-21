@@ -11,7 +11,7 @@
                             <div class="media" style="padding-top: 1px;">
                                 <img class="phone" src="../images/phone.png">
                                 <div class="body">
-                                    <p class="information">+7(777)-777-77-77</p>
+                                    <a href="#" class="information">+7(777)-777-77-77</a>
                                 </div>
                             </div>
                         </li>
@@ -19,7 +19,7 @@
                             <div class="media">
                                 <img class="phone" src="../images/email.png" style="padding-top: 3px;">
                                 <div class="body">
-                                    <p class="information">pieceofcake@mail.ru</p>
+                                    <a href="#" class="information">pieceofcake@mail.ru</a>
                                 </div>
                             </div>
                         </li>

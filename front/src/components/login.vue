@@ -8,13 +8,13 @@
                     <form>
                         <div class="form-group">
                             <label class="emailLabel" for="exampleInputEmail1">E-mail</label>
-                            <input type="text" class="form-control email" v-model="data.username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+                            <input type="text" class="form-control email" v-model="formData.username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
                         </div>
                         <div class="form-group">
                             <label class="passwordLabel" for="exampleInputPassword1">Пароль</label>
-                            <input type="password" class="form-control email" v-model="data.password" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control email" v-model="formData.password" id="exampleInputPassword1" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-warning" @click="submit()"><p>Submit</p></button>
+                        <button type="submit" class="btn btn-warning" @click.prevent="submit"><router-link to="/"><p>Submit</p></router-link></button>
                     </form>
                 </div>
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 column2 text-center">
@@ -34,7 +34,7 @@ import Footer from './footer'
 export default {
     data(){
         return{
-              data :{
+              formData :{
                   username: '',
                   password: ''
               }
@@ -46,9 +46,8 @@ export default {
     },
     methods:{
         submit(){
-            this.$store.dispatch('signin', this.data).then(() => {
-                console.log("Hello")
-            })
+            this.$store.dispatch('signin', this.formData);
+                console.log("Hello");
         }
     }
 }

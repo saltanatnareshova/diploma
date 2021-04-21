@@ -9,6 +9,8 @@ import Menu from '../components/menu.vue';
 import Login from '../components/login.vue';
 import Signup from '../components/signup.vue';
 import Request from '../components/forrestaurants.vue';
+import Orders from '../components/orders.vue';
+import store from '../store/index.js';
 
 Vue.use(VueRouter)
 
@@ -46,7 +48,14 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: Login
+    component: Login,
+    beforeEnter: (to, from, next) => {
+      if(store.state.token){
+        next('/')
+      }else{
+        next()
+      }
+    }
   },
   {
     path: '/signup',
@@ -57,7 +66,19 @@ const routes = [
     path: '/request',
     name: 'reguest',
     component: Request
-  } 
+  },
+  {
+    path: '/orders',
+    name: 'orders',
+    component: Orders,
+    beforeEnter: (to, from, next) => {
+      if(store.state.token){
+        next()
+      }else{
+        next('/')
+      }
+    }
+  }
 ]
 
 const router = new VueRouter({

@@ -9,7 +9,7 @@
                                 <div class="media" style="padding-top: 1px;">
                                     <img class="phone" src="../images/phone.png">
                                     <div class="body">
-                                        <p class="information">+7(777)-777-77-77</p>
+                                        <a  href="#" class="information">+7(777)-777-77-77</a>
                                     </div>
                                 </div>
                             </div>
@@ -17,7 +17,7 @@
                                 <div class="media">
                                     <img class="phone" src="../images/email.png" style="padding-top: 3px;">
                                     <div class="body">
-                                        <p class="information">pieceofcake@mail.ru</p>
+                                        <a href="#" class="information">pieceofcake@mail.ru</a>
                                     </div>
                                 </div>
                             </div>
@@ -25,8 +25,11 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="float-right">
-                            <router-link to="/login"><button class="btn btn-outline-warning">Пользователям</button></router-link>
-                            <router-link to="/request"><button class="btn btn-outline-warning" style="margin-left: 10px;">Ресторанам</button></router-link>
+                            <router-link to="/request"><button class="btn btn-outline-warning" style="margin-right: 10px;">Ресторанам</button></router-link>
+                            <router-link to="/login" v-if="!isAuth"><button class="btn btn-outline-warning">Login</button></router-link>
+                            <router-link to="/signup" v-if="!isAuth"><button class="btn btn-outline-warning">Sign up</button></router-link>
+                            <button class="btn btn-outline-warning" @click="logout" v-if="isAuth">Log out</button>
+                            <router-link to="/orders" v-if="isAuth"><button class="btn btn-outline-warning">Orders</button></router-link>
                         </div>
                     </div>
                 </div>
@@ -70,7 +73,18 @@
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    computed:{
+        isAuth(){
+            return this.$store.getters.isAuth
+        }
+    },
+    methods:{
+        logout(){
+            this.$store.commit('logout');
+            console.log("Hello");
+        }
+    }
 }
 </script>
 <style scoped>

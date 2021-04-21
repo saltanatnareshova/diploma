@@ -51,7 +51,7 @@ export default {
 </script>
 <style scoped>
 .restaurants{
-    margin-top: 200px;
+    margin-top: 300px;
     margin-bottom: 100px;
 }
 .restaurants h1{

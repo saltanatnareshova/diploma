@@ -5,7 +5,17 @@
         <div class="slider">    
             <b-row>
                 <b-col xl="6" lg="6" md="6" sm="12">
-                    <img class="img" src="../images/slider1.jpg">
+                    <carousel :per-page="1" :paginationEnabled="false" :autoplay="true">
+                        <slide>
+                            <img class="img" src="../images/slider1.jpg">
+                       </slide>
+                       <slide>
+                            <img class="img" src="../images/slider1.jpg">
+                       </slide>
+                       <slide>
+                            <img class="img" src="../images/slider1.jpg">
+                       </slide>
+                    </carousel>
                 </b-col>
                 <b-col xl="6" lg="6" md="6" sm="12">
                     <div class="container">
@@ -99,14 +109,16 @@
 </div>
 </template>
 <script>
-import axios from 'axios';
+import { Carousel, Slide } from 'vue-carousel'
 import Header from './header';
 import Footer from './footer';
 export default {
     name: 'Main',
     components: {
         Header,
-        Footer
+        Footer,
+        Carousel,
+        Slide
     },
     data(){
         return{
