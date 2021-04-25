@@ -2,24 +2,22 @@
     <div>
         <Header />
         <div class="container restaurants">
-            <h1>Canteens</h1>
-            <div class="list border border-warning" v-for="(canteen, index) in canteens" :key="index">
-                <div class="media">
-                    <img src="../images/slider2.webp">
-                    <div class="media-body">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col--12">
-                                <router-link :to="{path: `/restaurants/${canteen.id}/meals/`}"><h4>{{ canteen.name }}</h4></router-link>
-                                <h6>{{ canteen.address }}</h6>
-                                <h6>{{ canteen.avg_cost }}</h6>
-                                <p>О ресторане: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col--12 text-center">
-                                <router-link :to="{path: `/restaurants/${canteen.id}/meals/`}"><button type="button" class="btn btn-warning"><p>Перейти в меню</p></button></router-link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h1>Fast Food places</h1>
+            <div class="list border" v-for="(fastfood, index) in canteens" :key="index">
+                <b-row>
+                    <b-col lg="2" md="2" sm="12">
+                    <img :src="fastfood.image_url">
+                    </b-col>
+                    <b-col lg="8" md="8" sm="12" style="padding-left: 40px;">
+                        <router-link :to="{path: `/fastfoods/${fastfood.id}`}"><h4>{{ fastfood.name }}</h4></router-link>
+                        <h6>Наш адрес: {{ fastfood.address }}</h6>
+                        <p>Наши контакты:{{ fastfood.contact }}</p>
+                        <p>Средний чек: {{ fastfood.avg_cost }}</p>
+                    </b-col>
+                    <b-col lg="2" md="2" sm="12">
+                       <router-link :to="{path: `/fastfoods/${fastfood.id}/meals/`}"><button type="button" class="btn btn-warning"><p>Перейти в меню</p></button></router-link>          
+                    </b-col>
+                </b-row>
             </div>
         </div>
         <Footer />
@@ -41,7 +39,7 @@ export default {
     },
     mounted(){
         var self = this;
-        axios.get(`http://127.0.0.1:8000/api/categories/2/restaurants/`)
+        axios.get(`http://127.0.0.1:8000/api/categories/fastfoods/`)
         .then(response => (self.canteens = response.data))
         .catch(function(error){
             console.log(error);
@@ -67,7 +65,8 @@ export default {
     margin: 20px 0px 20px 0px;
     padding: 20px 20px 20px 20px;
     border-radius: 5px;
-}
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
 .restaurants .list img{
     width: 180px;
     height: 171px;
@@ -95,7 +94,7 @@ export default {
     font-weight: normal;
     font-size: 13px;
     line-height: 18px;
-    color: rgba(0, 0, 0, 0.75);
+    color: rgba(85, 84, 84, 0.75);
 }
 .restaurants .list .media-body{
     margin-left: 49px;

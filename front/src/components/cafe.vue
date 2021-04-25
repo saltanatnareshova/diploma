@@ -2,24 +2,23 @@
     <div>
         <Header />
         <div class="container restaurants">
-            <h1>Cafe</h1>
-            <div class="list border border-warning" v-for="(cafe, index) in cafees" :key="index">
-                <div class="media">
-                    <img src="../images/slider2.webp">
-                    <div class="media-body">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col--12">
-                                <router-link :to="{path: `/restaurants/${cafe.id}/meals/`}"><h4>{{ cafe.name }}</h4></router-link>
-                                <h6>{{ cafe.address }}</h6>
-                                <h6>{{ cafe.avg_cost }}</h6>
-                                <p>О ресторане: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indsed in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col--12 text-center">
-                                <router-link :to="{path: `/restaurants/${cafe.id}/meals/`}"><button type="button" class="btn btn-warning"><p>Перейти в меню</p></button></router-link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h1>Кафе</h1>
+            <div class="list border" v-for="(cafe, index) in cafees" :key="index">
+                <b-row>
+                    <b-col lg="2" md="2" sm="12">
+                    <img :src="cafe.image_url">
+                    </b-col>
+                    <b-col lg="8" md="8" sm="12" style="padding-left: 40px;">
+                        <router-link :to="{path: `/cafes/${cafe.id}`}"><h4>{{ cafe.name }}</h4></router-link>
+                        <h6>Наш адрес: {{ cafe.address }}</h6>
+                        <p>Наши контакты:{{ cafe.contact }}</p>
+                        <p>Средний чек: {{ cafe.avg_cost }}</p>
+                        <p>{{ cafe.info }}</p>
+                    </b-col>
+                    <b-col lg="2" md="2" sm="12">
+                       <router-link :to="{path: `/cafes/${cafe.id}/meals/`}"><button type="button" class="btn btn-warning"><p>Перейти в меню</p></button></router-link>          
+                    </b-col>
+                </b-row>
             </div>
         </div>
         <Footer />
@@ -41,7 +40,7 @@ export default {
     },
     mounted(){
         var self = this;
-        axios.get(`http://127.0.0.1:8000/api/categories/3/restaurants/`)
+        axios.get(`http://127.0.0.1:8000/api/categories/cafes/`)
         .then(response => (self.cafees = response.data))
         .catch(function(error){
             console.log(error);
@@ -67,7 +66,8 @@ export default {
     margin: 20px 0px 20px 0px;
     padding: 20px 20px 20px 20px;
     border-radius: 5px;
-}
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
 .restaurants .list img{
     width: 180px;
     height: 171px;
@@ -95,7 +95,7 @@ export default {
     font-weight: normal;
     font-size: 13px;
     line-height: 18px;
-    color: rgba(0, 0, 0, 0.75);
+    color: rgba(85, 84, 84, 0.75);
 }
 .restaurants .list .media-body{
     margin-left: 49px;

@@ -7,23 +7,16 @@
             <form>
                 <div class="row" style="margin-bottom: 30px;">
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <input type="text" class="form-control" v-model="formData.username"  aria-describedby="emailHelp" placeholder="Your username">
+                        <input type="text" class="form-control" v-model="formData.username"  aria-describedby="emailHelp" placeholder="Имя пользователя">
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <input type="text" class="form-control" v-model="formData.first_name"  aria-describedby="emailHelp" placeholder="Your name">
+                        <input type="text" class="form-control" v-model="formData.first_name"  aria-describedby="emailHelp" placeholder="Имя">
                     </div>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" v-model="formData.email"  placeholder="e-mail">
                 </div>
-                <div class="row" style="margin-top: 30px;">
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <input type="password" class="form-control" v-model="formData.password" aria-describedby="emailHelp" placeholder="Enter the password">
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <input type="password" class="form-control" v-model="formData.password"  aria-describedby="emailHelp" placeholder="Enter the password again">
-                    </div>
-                </div>
+               <input type="password" class="form-control" v-model="formData.password" aria-describedby="emailHelp" placeholder="Пароль">
                 <div class="form-check" style="margin-top: 30px;">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1" required="true">
                     <label class="form-check-label" for="exampleCheck1">Я ознакомлен(а) с Политикой конфиденциальности и даю согласие на обработку моих персональных данных. Я принимаю условия  

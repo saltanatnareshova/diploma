@@ -5,9 +5,10 @@ from rest_framework.decorators import api_view
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import filters
 
-from api.models import Category, Restaurant, Meal, Review, Order
-from api.serializers import CategorySerializer, RestaurantSerializer, \
-                            MealSerializer, ReviewSerializer, OrderSerializer
+from api.models import Category, Restaurant, Cafe, Fastfood, RestaurantMeal, CafeMeal, FastfoodMeal, RestaurantReview, CafeReview, FastfoodReview, Order
+from api.serializers import CategorySerializer, RestaurantSerializer, CafeSerializer, FastfoodSerializer, \
+                            RestaurantMealSerializer, CafeMealSerializer, FastfoodMealSerializer, \
+                            RestaurantReviewSerializer, CafeReviewSerializer, FastfoodReviewSerializer, OrderSerializer
 
 from django.shortcuts import get_object_or_404
 
@@ -46,19 +47,20 @@ class Restaurants(APIView):
     filter_backends = (filters.OrderingFilter,)
     ordering = ('name', )
 
-    def get(self, request, pk):
-        category = get_object_or_404(Category, pk=pk)
-        restaurants = category.restaurants.all()
+    def get(self, request):
+        # category = get_object_or_404(Category, pk=pk)
+        restaurants = Restaurant.objects.all()
         serializer = RestaurantSerializer(restaurants, many=True)
         return Response(serializer.data)
 
-    def post(self, request, pk):
+    def post(self, request):
         serializer = RestaurantSerializer(data=request.data)
         if serializer.is_valid():
-            category = get_object_or_404(Category, id=self.kwargs['pk'])
-            serializer.save(category=category)
+            # category = get_object_or_404(Category, id=self.kwargs['pk'])
+            serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=500)
+
 
 
 class RestaurantView(APIView):
@@ -79,34 +81,156 @@ class RestaurantView(APIView):
         restaurant.delete()
         return Response(status=204)
 
+class Cafes(APIView):
+    filter_backends = (filters.OrderingFilter,)
+    ordering = ('name', )
 
-class Meals(generics.ListCreateAPIView):
-    serializer_class = MealSerializer
+    def get(self, request):
+        # category = get_object_or_404(Category, pk=pk)
+        cafes = Cafe.objects.all()
+        serializer = CafeSerializer(cafes, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = CafeSerializer(data=request.data)
+        if serializer.is_valid():
+            # category = get_object_or_404(Category, id=self.kwargs['pk'])
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=500)
+
+
+class CafeView(APIView):
+    def get(self, request, pk):
+        cafe = get_object_or_404(Cafe, pk=pk)
+        serializer = CafeSerializer(cafe)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        cafe = get_object_or_404(Cafe, pk=pk)
+        serializer = CafeSerializer(instance=cafe, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+    def delete(self, request, pk):
+        cafe = get_object_or_404(Cafe, pk=pk)
+        cafe.delete()
+        return Response(status=204)
+
+
+class Fastfoods(APIView):
+    filter_backends = (filters.OrderingFilter,)
+    ordering = ('name', )
+
+    def get(self, request):
+        # category = get_object_or_404(Category, pk=pk)
+        fastfoods = Fastfood.objects.all()
+        serializer = RestaurantSerializer(fastfoods, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = FastfoodSerializer(data=request.data)
+        if serializer.is_valid():
+            # category = get_object_or_404(Category, id=self.kwargs['pk'])
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=500)
+
+
+class FastfoodView(APIView):
+    def get(self, request, pk):
+        fastfood = get_object_or_404(Fastfood, pk=pk)
+        serializer = FastfoodSerializer(fastfood)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        fastfood = get_object_or_404(Fastfood, pk=pk)
+        serializer = FastfoodSerializer(instance=fastfood, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+    def delete(self, request, pk):
+        fastfood = get_object_or_404(Fastfood, pk=pk)
+        fastfood.delete()
+        return Response(status=204)
+
+
+class RestaurantMeals(generics.ListCreateAPIView):
+    serializer_class = RestaurantMealSerializer
     filter_backends = (filters.OrderingFilter,)
     ordering = ('price',)
 
     def get_queryset(self):
-        return Meal.objects.filter(restaurant=self.kwargs['pk'])
+        return RestaurantMeal.objects.filter(place=self.kwargs['pk'])
 
     def perform_create(self, serializer):
         restaurant = get_object_or_404(Restaurant, id=self.kwargs['pk'])
-        serializer.save(restaurant=restaurant)
+        serializer.save(place=restaurant)
+
+
+class CafeMeals(generics.ListCreateAPIView):
+    serializer_class = CafeMealSerializer
+    filter_backends = (filters.OrderingFilter,)
+    ordering = ('price',)
+
+    def get_queryset(self):
+        return CafeMeal.objects.filter(place=self.kwargs['pk'])
+
+    def perform_create(self, serializer):
+        cafe = get_object_or_404(Cafe, id=self.kwargs['pk'])
+        serializer.save(place=cafe)
+
+class FastfoodMeals(generics.ListCreateAPIView):
+    serializer_class = FastfoodMealSerializer
+    filter_backends = (filters.OrderingFilter,)
+    ordering = ('price',)
+
+    def get_queryset(self):
+        return FastfoodMeal.objects.filter(place=self.kwargs['pk'])
+
+    def perform_create(self, serializer):
+        fastfood = get_object_or_404(Restaurant, id=self.kwargs['pk'])
+        serializer.save(place=fastfood)
 
 
 class MealView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Meal.objects.all()
-    serializer_class = MealSerializer
+    queryset = RestaurantMeal.objects.all()
+    serializer_class = RestaurantMealSerializer
 
 
-class Reviews(generics.ListCreateAPIView):
-    serializer_class = ReviewSerializer
+class RestaurantReviews(generics.ListCreateAPIView):
+    serializer_class = RestaurantReviewSerializer
 
     def get_queryset(self):
-        return Review.objects.filter(restaurant=self.kwargs['pk'])
+        return RestaurantReview.objects.filter(place=self.kwargs['pk'])
 
     def perform_create(self, serializer):
-        restaurant = get_object_or_404(Restaurant, id=self.kwargs['pk'])
-        serializer.save(user=self.request.user, restaurant=restaurant)
+        place = get_object_or_404(Restaurant, id=self.kwargs['pk'])
+        serializer.save(user=self.request.user, place=place)
+
+
+class CafeReviews(generics.ListCreateAPIView):
+    serializer_class = CafeReviewSerializer
+
+    def get_queryset(self):
+        return CafeReview.objects.filter(place=self.kwargs['pk'])
+
+    def perform_create(self, serializer):
+        place = get_object_or_404(Cafe, id=self.kwargs['pk'])
+        serializer.save(user=self.request.user, place=place)
+
+
+class FastfoodReviews(generics.ListCreateAPIView):
+    serializer_class = FastfoodReviewSerializer
+
+    def get_queryset(self):
+        return FastfoodReview.objects.filter(place=self.kwargs['pk'])
+
+    def perform_create(self, serializer):
+        place = get_object_or_404(Cafe, id=self.kwargs['pk'])
+        serializer.save(user=self.request.user, place=place)
 
 
 class Orders(generics.ListCreateAPIView):

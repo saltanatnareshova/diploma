@@ -3,9 +3,14 @@ import VueRouter from 'vue-router'
 import Main from '../components/main.vue';
 import AboutUs from '../components/aboutus.vue';
 import Restaurants from '../components/restaurants.vue';
+import restaurantInfo from '../components/aboutRestaurant.vue';
+import cafeInfo from '../components/aboutCafe.vue';
+import fastfoodInfo from '../components/aboutFastFood.vue';
 import Cafe from '../components/cafe.vue';
 import Canteens from '../components/canteens.vue';
-import Menu from '../components/menu.vue';
+import MenuRestaurants from '../components/menuRestaurants.vue';
+import MenuCafes from '../components/menuCafes.vue';
+import MenuFastFoods from '../components/menuFastFoods.vue';
 import Login from '../components/login.vue';
 import Signup from '../components/signup.vue';
 import Request from '../components/forrestaurants.vue';
@@ -31,9 +36,34 @@ const routes = [
     component: Restaurants,
   },
   {
+    path: '/restaurants/:id',
+    name: 'restaurantInfo',
+    component: restaurantInfo,
+  },
+  {
+    path: '/cafes/:id',
+    name: 'cafeInfo',
+    component: cafeInfo,
+  },
+  {
+    path: '/fastfoods/:id',
+    name: 'fastfoodInfo',
+    component: fastfoodInfo,
+  },
+  {
     path: '/restaurants/:id/meals/',
-    name: 'menu',
-    component: Menu,
+    name: 'menuRestaurants',
+    component: MenuRestaurants,
+  },
+  {
+    path: '/cafes/:id/meals/',
+    name: 'menuCafes',
+    component: MenuCafes,
+  },
+  {
+    path: '/fastfoods/:id/meals/',
+    name: 'menuFastFoods',
+    component: MenuFastFoods,
   },
   {
     path: '/cafees',

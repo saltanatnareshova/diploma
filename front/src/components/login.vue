@@ -7,12 +7,12 @@
                     <h1>Уже зарегестрированы </h1>
                     <form>
                         <div class="form-group">
-                            <label class="emailLabel" for="exampleInputEmail1">E-mail</label>
-                            <input type="text" class="form-control email" v-model="formData.username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+                            <label class="emailLabel" for="exampleInputEmail1">Имя пользователя</label>
+                            <input type="text" class="form-control email" v-model="formData.username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Имя пользователя">
                         </div>
                         <div class="form-group">
                             <label class="passwordLabel" for="exampleInputPassword1">Пароль</label>
-                            <input type="password" class="form-control email" v-model="formData.password" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" class="form-control email" v-model="formData.password" id="exampleInputPassword1" placeholder="Пароль">
                         </div>
                         <button type="submit" class="btn btn-warning" @click.prevent="submit"><router-link to="/"><p>Submit</p></router-link></button>
                     </form>

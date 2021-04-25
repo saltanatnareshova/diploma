@@ -16,10 +16,10 @@
                             </div>
                         </li>
                         <li class="d-flex nav-item before">
-                            <div class="media">
+                            <div class="media info">
                                 <img class="phone" src="../images/email.png" style="padding-top: 3px;">
                                 <div class="body">
-                                    <a href="#" class="information">pieceofcake@mail.ru</a>
+                                    <a href="#" class="email">pieceofcake@mail.ru</a>
                                 </div>
                             </div>
                         </li>
@@ -36,18 +36,17 @@ export default {
 </script>
 <style scoped>
 .footer{
+    padding: 10px 56px 10px 56px;
     background: #7D9A2C;
 }
 .footer .logo{
-    margin: 16px 0px 15px 50px;
+    width: 50px;
 }
 .footer .phone{
     width: 20px;
 }
-.footer .information{
-    font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
+.footer .information, .footer .email{
+    font-family: Circular Std;
     font-size: 15px;
     line-height: 24px;
     color: #FFFFFF;
@@ -55,11 +54,17 @@ export default {
 .footer .media .body{
     padding-left: 20px;
 }
-.footer .media{
+.footer .info{
     padding-left: 50px;
+}
+.footer .nav{
+    padding-top: 20px;
 }
 @media screen and (max-width: 453px){
   .before::before{display: none !important;}
+  .footer .info{
+    padding-left: 0px;
+}
 }
 .before::before{
   display: inline-block;

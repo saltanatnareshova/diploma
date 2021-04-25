@@ -9,23 +9,23 @@
                      <form>
                         <div class="row" style="margin-bottom: 30px;">
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your name">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Имя">
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 column2">
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your e-mail">
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Е-mail">
                             </div>
                         </div>
                         <div class="row" style="margin-bottom: 30px;">
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Restaurant">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Название заведения">
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 column2">
-                                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your phone">
+                                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Номер телефона">
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Your city">
-                            <textarea placeholder="Comment"></textarea>
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Город">
+                            <textarea placeholder="Сообщение"></textarea>
                         </div>
                        <div class="form-check" style="margin-top: 30px;">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">

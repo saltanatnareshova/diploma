@@ -3,7 +3,7 @@
     <Header />
     <div class="main">
         <div class="slider">    
-            <b-row>
+            <div class="row">
                 <b-col xl="6" lg="6" md="6" sm="12">
                     <carousel :per-page="1" :paginationEnabled="false" :autoplay="true">
                         <slide>
@@ -15,23 +15,45 @@
                        <slide>
                             <img class="img" src="../images/slider1.jpg">
                        </slide>
+                        <slide>
+                            <img class="img" src="../images/slider1.jpg">
+                       </slide>
+                        <slide>
+                            <img class="img" src="../images/slider1.jpg">
+                       </slide>
+                        <slide>
+                            <img class="img" src="../images/slider1.jpg">
+                       </slide>
+                        <slide>
+                            <img class="img" src="../images/slider1.jpg">
+                       </slide>
                     </carousel>
                 </b-col>
                 <b-col xl="6" lg="6" md="6" sm="12">
-                    <div class="container">
-                        <p class="welcome">Welcome to PeaceOfCake!</p>
-                        <h2 class="title">Закажи сейчас, используй время с умом</h2>
-                        <div class="float-right"><button class="btn btn-outline-warning"><p class="btn-text">Забрать с собой</p></button></div>
+                    <div class="title">
+                        <h2>Мы готовы сэкономить твое время, используй его с умом!</h2>
+                        <br>
+                        <p class="welcome">Добро пожаловать в PeaceOfCake!</p>
+                        <div><button class="btn btn-warning">Забрать с собой</button></div>
                     </div>
                 </b-col>
-            </b-row>
+            </div>
         </div>
-        <div class="about">
-            <div class="container justify-content-center">                
-                <h1 style="padding-top: 100px;">О нас</h1>
-                <p>У вас когда-нибудь возникала проблема......???</p>
+        <div class="about container">
+            <b-row>
+                <b-col lg="6" md="12" sm="12" class="row-images">
+                    <img class="row-img" src="../images/about_1.jpeg">
+                    <img class="row-img2" src="../images/about_2.jpeg">
+                    <img class="row-img3" src="../images/about_3.jpeg">
+                </b-col>
+                <b-col lg="6" md="12" sm="12">
+                    <h1 style="padding-top: 100px;">О нас</h1>
+                <p>У вас когда-нибудь былоб что Вам приходилось стоят в очереди чтобы забрать свой заказ или чтобы сесть за оссвободившейся стол в заведениях общественного питания?</p>
                 <p>Вам больше не нужно тратить время на ожидание блюд и счета — заказ будет на столе или упакован с собой точно ко времени визита.</p>
                 <p>A Pieace of Cake - уникальный веб-сайт для предзаказа еды в заведениях.</p>
+                </b-col>
+            </b-row>
+            <div class="container justify-content-center">                
                 <div class="information" style="background: #FAE5B0;">
                     <h1>Как это сделать?</h1>
                     <b-container>
@@ -72,35 +94,22 @@
                     <p>Tole Bi, 50</p>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center border border-warning">
-                    <img class="images" src="../images/paul.jpg">
+                    <img class="images" src="../images/about_1.jpeg">
                     <hr>
-                    <h2>Paul</h2>
-                    <p>Tole Bi, 50</p>
+                    <h2>Coffee Boom</h2>
+                    <p>Tole Bi, 150</p>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center border border-warning">
-                    <img class="images" src="../images/paul.jpg">
+                    <img class="images" src="../images/about_2.jpeg">
                     <hr>
-                    <h2>Paul</h2>
-                    <p>Tole Bi, 50</p>
+                    <h2>Navat</h2>
+                    <p>Rozybakiyeva, 50</p>
                 </div>
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 text-center border border-warning">
-                    <img class="images" src="../images/paul.jpg">
+                    <img class="images" src="../images/about_3.jpeg">
                     <hr>
-                    <h2>Paul</h2>
-                    <p>Tole Bi, 50</p>
-                </div>
-            </div>
-        </div>
-        <div class="container contacts">
-            <h1>Наши контакты</h1>
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                    <p>Телефон:</p>
-                    <p>+7 777 77 77 777</p>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                    <p>E-mail:</p>
-                    <p>pieaceofcake@mail.ru</p>
+                    <h2>KFC</h2>
+                    <p>Tole Bi, 22</p>
                 </div>
             </div>
         </div>
@@ -148,59 +157,68 @@ export default {
     }
 }
 .slider .welcome{
-    font-family: Zilla Slab;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
-    color: #E0E9E5;
-    margin-top: 201px;
-    margin-left: 45px;
+    font-weight: 500;
 }
 .slider .title{
-    font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 34px;
+    font-family: Pacifico;
+    font-size: 25px;
     line-height: 41px;
     color: #D4DDCA;
-    margin-left: 45px;
+    margin: 350px 0px 0px 45px;
+}
+.slider h2{
+    font-family: Alegreya;
+    font-weight: 1000;
+    font-size: 55px;
+    line-height: 41px;
+    color: #D4DDCA;
 }
 .slider .btn{
-    mix-blend-mode: normal;
     border: 2px solid #F39E03;
     border-radius: 50px;
     margin-top: 63px;
     margin-right: 136px;
-    padding-top: 12px;
-}
-.slider .btn-text{
-    font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 21px;
-    line-height: 25px;
-    color: #D4DDCA;
+    font-family: Circlular Std;
+    color: white;
+    width: 180px;
+    height: 50px;
 }
 .about{
     padding-top: 765px;
 }
+.about .row-img, .about .row-img2, .about .row-img3{
+    width: 200px;
+    position: absolute;
+}
+.about .row-img{
+    top: 110px;
+}
+.about .row-img2{
+    top: 260px;
+    left: 100px;
+}
+.about .row-img3{
+    width: 230px;
+    top: 170px;
+    left: 300px;
+}
+@media screen and (max-width: 1190px) {
+    .about .row-images{
+        display: none !important;
+    }
+}
 .about h1{
     font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
     font-size: 48px;
     line-height: 57px;
     color: #7D9A2C;
     text-align: center;
 }
 .about p{
-    font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
+    font-family: Circular Std;
     font-size: 24px;
     line-height: 29px;
-    color: #7D9A2C;
+    color: black;
 }
 .about .img{
     background-repeat: no-repeat;
@@ -217,19 +235,16 @@ export default {
 .about .steps{
     margin-top: 20px;
     font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
     font-size: 20px;
     line-height: 24px;
     color: #7D9A2C;
 }
 .best_places{
     margin-top: 100px;
+    margin-bottom: 100px;
 }
 .best_places h1{
     font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
     font-size: 48px;
     line-height: 57px;
     color: #7D9A2C;
@@ -243,8 +258,6 @@ export default {
 }
 .best_places h2{
     font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
     font-size: 36px;
     line-height: 43px;
     text-align: center;
@@ -252,8 +265,6 @@ export default {
 }
 .best_places p{
     font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
     font-size: 13px;
     line-height: 16px;
     text-align: center;
@@ -271,8 +282,6 @@ export default {
 }
 .contacts h1{
     font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
     font-size: 48px;
     line-height: 57px;
     color: #7D9A2C;
@@ -280,9 +289,7 @@ export default {
 }
 .contacts p{
     font-family: Supermercado;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 36px;
     color: #7D9A2C;
 }

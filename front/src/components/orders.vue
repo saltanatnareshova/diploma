@@ -3,17 +3,18 @@
         <Header />
         <div class="orders">
             <div class="container">
-            <h1>My Orders</h1>
-            <div class="order">
-                <div class="items border border-warning">
-                    <h4>Order name</h4>
-                    <p>(orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the) </p>
+            <h1>Мои заказы</h1>
+            <div class="order" v-for="(order, index) in formData" :key="index">
+                <div class="items border">
+                    <h2>{{ order.meal_name }}</h2>
+                    <p>Ingridients: <span class="info">{{ order.structure }}</span> </p>
+                    <p>Time of preparation: <span class="info">{{ order.time }}</span> </p>                    
                     <div class="row">
                             <div class="col-6">
-                                <h4>Price: 100$</h4>
+                                <h4>Number: <span class="info">{{ order.count }}</span></h4>
                             </div>
                             <div class="col-6">
-                                <button type="button" class="btn btn-success">Accept</button>
+                                <button type="button" class="btn btn-success">Потвердить</button>
                             </div>
                     </div>         
                 </div>
@@ -35,11 +36,7 @@ export default {
     },
     data(){
         return{
-           
-            formData:{
-                username: 'saltok',
-                password: '12'
-            }
+            formData:{}
         }       
     },
     methods:{
@@ -49,13 +46,14 @@ export default {
         
     },
     created(){
-        const headers = {  "Authorization": "token 9ccc7b63e73bb0881fb00b63727598eaee78cab" };
+        var self = this;
+        const headers = {  "Authorization": "token " + localStorage.getItem("token") };
         axios.get(`http://127.0.0.1:8000/api/orders/`, 
         {
             headers
         }
         )
-        .then(res => console.log(res))
+        .then(res => self.formData = res.data )
         .catch(error => console.log(error));
     }
 }
@@ -75,24 +73,29 @@ export default {
     color: #7D9A2C;
 }
 .orders .items{
+    width: 800px;
     padding: 10px 5px 5px 10px;
     margin: 10px 0px 10px 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.orders h4{
-    font-family: Supermercado;
+.order h2{
+    font-family: Circular Std;
     font-style: normal;
     font-weight: normal;
-    font-size: 30px;
-    line-height: 22px;
-    color: black;
-}
-.orders p{
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 25px;
+    line-height: 23px;
     color: #7D9A2C;
+}
+.order p, .orders h4{
+    font-family: Circulat Std;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    color: #7D9A2C;
+}
+.order .info{
+    font-weight: 500;
 }
 .orders button{
     background: #7D9A2C;
